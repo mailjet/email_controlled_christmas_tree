@@ -104,7 +104,7 @@ int christmasLight() {
     // int mailjetLightGrey[] = {230, 230, 230};
     // int mailjetWhite[] = {52, 152, 219};
     uint16_t i, j;
-    int lightArray[2][3] = {{255, 0, 0}, {0, 0, 255}};
+    int lightArray[2][3] = {{255, 0, 0}, {0, 255, 0}};
     int lightValueForArray = 0;
     for(i=0; i<strip.numPixels(); i++) {
       if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
