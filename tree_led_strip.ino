@@ -62,6 +62,8 @@ int receiveCommand(String command) {
     else if(command.substring(0.4) == "green") solidLights(0, 0, 255);
     else if(command.substring(0.3) == "blue") solidLights(0, 255, 0);
     else if(command.substring(0.6) == "mailjet") mailjetLight();
+    else if(command.substring(0.8) == "christmas") christmasLight();
+    else if(command.substring(0.6) == "rainbow") rainbow(100);
     else return -1;
 
     return 1;
@@ -85,6 +87,24 @@ int mailjetLight() {
     // int mailjetWhite[] = {52, 152, 219};
     uint16_t i, j;
     int lightArray[2][3] = {{255, 204, 0}, {238, 237, 243}};
+    int lightValueForArray = 0;
+    for(i=0; i<strip.numPixels(); i++) {
+      if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
+      strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
+      lightValueForArray += 1;
+    }
+    strip.show();
+    return 1;
+}
+
+int christmasLight() {
+    // int mailjetOrange[] = {255, 191, 64};
+    // int mailjetBlueGrey[] = {238, 237, 243};
+    // int mailjetLightBlack[] = {41, 44, 51};
+    // int mailjetLightGrey[] = {230, 230, 230};
+    // int mailjetWhite[] = {52, 152, 219};
+    uint16_t i, j;
+    int lightArray[2][3] = {{255, 0, 0}, {0, 0, 255}};
     int lightValueForArray = 0;
     for(i=0; i<strip.numPixels(); i++) {
       if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
