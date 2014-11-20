@@ -21,7 +21,7 @@ void setup()
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
 
-  Spark.function("led_strip", changeLedStrip);
+  Spark.function("led_strip", receiveCommand);
 }
 void loop()
 {
@@ -56,18 +56,40 @@ uint32_t Wheel(byte WheelPos) {
 }
 
 //SparkCoreFunction
-int changeLedStrip(String command) {
-    int redValue, blueValue, greenValue;
-    uint16_t i, j;
+int receiveCommand(String command) {
 
-    //strip.Color(redValue, greenValue, blueValue)
-    if(command.substring(0.2) == "red") redValue = 255, blueValue = 0, greenValue = 0;
-    else if(command.substring(0.4) == "green") redValue = 0, blueValue = 0, greenValue = 255;
-    else if(command.substring(0.3) == "blue") redValue = 0, blueValue = 255, greenValue = 0;
+    if(command.substring(0.2) == "red") solidLights(255, 0, 0);
+    else if(command.substring(0.4) == "green") solidLights(0, 0, 255);
+    else if(command.substring(0.3) == "blue") solidLights(0, 255, 0);
+    else if(command.substring(0.6) == "mailjet") mailjetLight();
     else return -1;
 
-    for(i=0; i<strip.numPixels(); i++) {
+    return 1;
+}
+
+int solidLights(int redValue, int blueValue, int greenValue) {
+   //strip.Color(redValue, greenValue, blueValue)
+   uint16_t i, j;
+   for(i=0; i<strip.numPixels(); i++) {
       strip.setPixelColor(i, strip.Color(redValue, greenValue, blueValue));
+    }
+    strip.show();
+    return 1;
+}
+
+int mailjetLight() {
+    // int mailjetOrange[] = {255, 191, 64};
+    // int mailjetBlueGrey[] = {238, 237, 243};
+    // int mailjetLightBlack[] = {41, 44, 51};
+    // int mailjetLightGrey[] = {230, 230, 230};
+    // int mailjetWhite[] = {52, 152, 219};
+    uint16_t i, j;
+    int lightArray[2][3] = {{255, 204, 0}, {238, 237, 243}};
+    int lightValueForArray = 0;
+    for(i=0; i<strip.numPixels(); i++) {
+      if(lightValueForArray > 1) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
+      strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
+      lightValueForArray += 1;
     }
     strip.show();
     return 1;
