@@ -87,7 +87,7 @@ int mailjetLight() {
     int lightArray[2][3] = {{255, 204, 0}, {238, 237, 243}};
     int lightValueForArray = 0;
     for(i=0; i<strip.numPixels(); i++) {
-      if(lightValueForArray > 1) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
+      if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
       strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
       lightValueForArray += 1;
     }
