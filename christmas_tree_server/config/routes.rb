@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
    post '/email_processor' => 'change_lights#email_received'
+  #  get 'change_lights/email_received'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
