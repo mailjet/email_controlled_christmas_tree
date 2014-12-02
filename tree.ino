@@ -203,23 +203,22 @@ uint32_t Wheel(byte WheelPos) {
     }
 
     int mailjetMatrix() {
-      matrix.fillScreen(matrix.Color333(0, 0, 0)); //too much stuff to write -- have to erase everthing before creating this
       // print each letter with a rainbow color
-      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.setTextColor(matrix.Color333(238, 237, 243));
       matrix.print('m');
-      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.setTextColor(matrix.Color333(238, 237, 243));
       matrix.print('a');
-      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.setTextColor(matrix.Color333(238, 237, 243));
       matrix.print('i');
-      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.setTextColor(matrix.Color333(238, 237, 243));
       matrix.print('l');
 
       matrix.setCursor(14, 9);   // next line
-      matrix.setTextColor(matrix.Color333(238, 237, 243));
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
       matrix.print('j');
-      matrix.setTextColor(matrix.Color333(238, 237, 243));
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
       matrix.print('e');
-      matrix.setTextColor(matrix.Color333(238, 237, 243));
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
       matrix.print('t');
 
       return 1;
@@ -246,6 +245,7 @@ uint32_t Wheel(byte WheelPos) {
       if(command.substring(0.2) == "red") solidBackground(255, 0, 0);
       else if(command.substring(0.4) == "green") solidBackground(0, 255, 0);
       else if(command.substring(0.3) == "blue") solidBackground(0, 0, 255);
+      else if(command.substring(0.4) == "blank" || command.substring(0.4) == "black" || command.substring(0.6) == "nothing") solidBackground(0, 0, 0);
       else return -1;
 
       return 1;
@@ -314,3 +314,5 @@ uint32_t Wheel(byte WheelPos) {
     //   matrix.print("B");
     //   matrix.setTextColor(matrix.Color333(7,0,4));
     //   matrix.print("*");
+
+    
