@@ -1,6 +1,6 @@
 # Email Controlled Christmas Tree
 
-![RGB Dot Matrix](https://github.com/tylernappy/email_controlled_christmas_tree/assets/images/dot_matrix.jpg "Text")
+![RGB Dot Matrix](https://raw.githubusercontent.com/tylernappy/email_controlled_christmas_tree/master/assets/images/dot_matrix.jpg "Text")
 
 ### Overview
 Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/guides/parse-api-guide/) -- easy way to receive content of an email to your webhook -- and a simple Rails server to receive and process incoming emails, LEDs and ornaments, hooked up to a [Spark Core](https://www.spark.io/dev-kits) microcontroller, are controlled using commands sent via email.  Simply send an email to the email address returned when creating an instance of the Parse API with the color scheme of LEDs, the background of the LED dot matrix (aka the star on top of the tree), and what to display on the LED dot matrix (a star, a smiley face, some writing) and all of these will be updated instantly.
@@ -19,7 +19,7 @@ Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/g
 * 1 LED dot matrix ([Medium 16x32 RGB LED matrix panel](https://www.adafruit.com/products/420))
 * 1 [5V 10A switching power supply](http://www.adafruit.com/products/658)
 * 1 [Female DC Power adapter - 2.1mm jack to screw terminal block](http://www.adafruit.com/products/368)
-* 1 ["Mini"ish screwdriver](https://github.com/tylernappy/email_controlled_christmas_tree/assets/images/mini_screwdriver.jpg "Text")
+* 1 ["Mini"ish screwdriver](https://raw.githubusercontent.com/tylernappy/email_controlled_christmas_tree/master/assets/images/mini_screwdriver.jpg "Text")
 * 1 [4700uF 10v Electrolytic Capacitor](http://www.adafruit.com/products/1589)
 * 1 [USB A/Micro B](http://www.adafruit.com/products/898) (one comes with the Spark Core)
 * Many [jumper wires](http://www.adafruit.com/products/758)
