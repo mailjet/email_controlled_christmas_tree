@@ -14,6 +14,7 @@ gem 'devise'
 gem 'better_errors', :groups => [:development]
 gem "binding_of_caller"
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+# gem 'mailjet' , :path => '/Users/tylernappy/Mailjet/mailjet_software/mailjet-gem'
 gem 'twilio-ruby'
 
 gem 'nokogiri'
@@ -21,7 +22,7 @@ gem 'nokogiri'
 # gem 'spf'
 gem 'rubypython'
 gem 'encryptor'
-# gem 'libpayroll', :path => '/Users/tylernappy/desktop/hackcc/chess_parser/payroll_calculator'
+# gem 'libpayroll', :path => 'Users/tylernappy/desktop/hackcc/chess_parser/payroll_calculator'
 
 #may take this out
 # gem 'localtunnel'

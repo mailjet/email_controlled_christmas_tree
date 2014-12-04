@@ -1,8 +1,7 @@
-GIT
-  remote: https://github.com/mailjet/mailjet-gem.git
-  revision: 527673333375c6d42bd3c38d7cf7ea0e9d6ef21b
+PATH
+  remote: /Users/tylernappy/Mailjet/mailjet_software/mailjet-gem
   specs:
-    mailjet (1.0.1)
+    mailjet (1.0.0)
       activesupport (>= 3.1.0)
       rack (>= 1.4.0)
       rest-client
@@ -115,7 +114,7 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    netrc (0.8.0)
+    netrc (0.9.0)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
