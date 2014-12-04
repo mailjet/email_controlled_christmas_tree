@@ -1,7 +1,8 @@
-PATH
-  remote: /Users/tylernappy/Mailjet/mailjet_software/mailjet-gem
+GIT
+  remote: https://github.com/mailjet/mailjet-gem.git
+  revision: 527673333375c6d42bd3c38d7cf7ea0e9d6ef21b
   specs:
-    mailjet (1.0.0)
+    mailjet (1.0.1)
       activesupport (>= 3.1.0)
       rack (>= 1.4.0)
       rest-client
