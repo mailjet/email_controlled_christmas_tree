@@ -3,7 +3,7 @@
 ![RGB Dot Matrix](https://raw.githubusercontent.com/tylernappy/email_controlled_christmas_tree/master/assets/images/no_tree.jpg "Text")
 
 ### Overview
-Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/guides/parse-api-guide/) -- easiest way to receive content of an email to your webhook -- and a simple Rails server to receive and process incoming emails, LEDs and ornaments, hooked up to a [Spark Core](https://www.spark.io/dev-kits) microcontroller, are controlled using commands sent via email.  Simply send an email to the email address returned when creating an instance of the Parse API with the color scheme of LEDs, the background of the LED dot matrix (aka the star on top of the tree), and what to display on the LED dot matrix (a star, a smiley face, some writing) and all of these will be updated instantly.
+Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/guides/parse-api-guide/) -- an easy way to receive content of an email to your webhook -- and a simple Rails server to receive and process incoming emails, LEDs and ornaments, hooked up to a [Spark Core](https://www.spark.io/dev-kits) microcontroller, are controlled using commands sent via email.  Simply send an email to the email address returned when creating an instance of the Parse API with the color scheme of LEDs, the background of the LED dot matrix (aka the star on top of the tree), and what to display on the LED dot matrix (a star, a smiley face, some writing) and all of these will be updated instantly.
 
 ### Layout of files in this repo
 * **christmas_tree_server**
@@ -54,21 +54,21 @@ Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/g
 ### Commands to update the Christmas tree
 Commands are sent via email to the email address returned to you when creating an instance of Mailjet's Parse API.  Three commands are allowed -- update the LEDs on the tree, update the background of the LED dot matrix, and update image/writing on the LED dot matrix.  You do not need to include all three for this to work.  For example, you can update only the LEDs while keeping the LED dot matrix background and image the same.
 
-* Command to update LEDs --> `strip`
+* Command to update LEDs --> `lights`
 * Command to update LED dot matrix background --> `background`
-* Command to update LED dot matrix image --> `matrix`
+* Command to update LED dot matrix image --> `icon`
 
 Commands are written in the body of the email by specifying the action (changing the LEDs, changing the background and image on LED dot matrix) followed by what you'd like to change it to.   Commands can be sent in no particular order.  Here are example calls:
 
 * Blue LEDs; Red dot matrix background; Star as shape on dot matrix
- * `strip blue background red matrix star`
+ * `lights blue background red icon star`
 * Christmas colors LEDs; green dot matrix background; Mailjet logo as shape on dot matrix
- * `strip christmas background green matrix mailjet`
+ * `lights christmas background green icon mailjet`
 * Green LEDs; blank background on dot matrix background; Circle as shape on dot matrix
- * `strip green background blank matrix circle`
+ * `lights green background blank icon circle`
 
 Here is a list of all commands currently available for each variable:
-* LEDs - `strip`
+* LEDs - `lights`
   * `blue`
   * `green`
   * `red`
@@ -81,7 +81,7 @@ Here is a list of all commands currently available for each variable:
  * `blank`
  * `nothing`
  * `black`
-* LED dot matrix image - `matrix`
+* LED dot matrix image - `icon`
  * `circle`
  * `mailjet`
  * `star`
