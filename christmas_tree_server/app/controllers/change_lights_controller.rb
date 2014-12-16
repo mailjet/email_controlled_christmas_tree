@@ -16,8 +16,10 @@ class ChangeLightsController < ApplicationController
     end
 
     #POST request for LED background color
-    unless background.nil?
+    if background.nil? && !icon.nil?
       # icon = format_icon(params["Text-part"])
+      HTTParty.post("https://api.spark.io/v1/devices/#{ENV['coreID']}/background", body: {access_token: ENV['accessToken'], background: "black"})
+    elsif !background.nil?
       HTTParty.post("https://api.spark.io/v1/devices/#{ENV['coreID']}/background", body: {access_token: ENV['accessToken'], background: background})
     end
 
