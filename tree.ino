@@ -73,6 +73,10 @@ void setup() {
   Spark.function("background", receiveCommandBackground);
 
   matrix.begin();
+
+  mailjetLogo();
+  mailjetLight();
+
 }
 
 void loop() {
@@ -109,149 +113,210 @@ uint32_t Wheel(byte WheelPos) {
 
     //
 
-//SparkCoreFunction for LED Strip
-int receiveCommandLedStrip(String command) {
+    //SparkCoreFunction for LED Strip
+    int receiveCommandLedStrip(String command) {
 
-  if(command.substring(0.2) == "red") solidLights(255, 0, 0);
-  else if(command.substring(0.4) == "green") solidLights(0, 255, 0);
-  else if(command.substring(0.3) == "blue") solidLights(0, 0, 255);
-  else if(command.substring(0.6) == "mailjet") mailjetLight();
-  else if(command.substring(0.8) == "christmas") christmasLight();
-  else if(command.substring(0.6) == "rainbow") rainbow(100);
-  else return -1;
+      if(command.substring(0.2) == "red") solidLights(255, 0, 0);
+      else if(command.substring(0.4) == "green") solidLights(0, 255, 0);
+      else if(command.substring(0.3) == "blue") solidLights(0, 0, 255);
+      else if(command.substring(0.6) == "mailjet") mailjetLight();
+      else if(command.substring(0.8) == "christmas") christmasLight();
+      else if(command.substring(0.6) == "rainbow") rainbow(100);
+      else return -1;
 
-  return 1;
-}
+      return 1;
+    }
 
-int solidLights(int redValue, int greenValue, int blueValue) {
-  //strip.Color(redValue, greenValue, blueValue)
-  uint16_t i, j;
-  for(i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, strip.Color(redValue, greenValue, blueValue));
-  }
-  strip.show();
-  return 1;
-}
+    int solidLights(int redValue, int greenValue, int blueValue) {
+      //strip.Color(redValue, greenValue, blueValue)
+      uint16_t i, j;
+      for(i=0; i<strip.numPixels(); i++) {
+        strip.setPixelColor(i, strip.Color(redValue, greenValue, blueValue));
+      }
+      strip.show();
+      return 1;
+    }
 
-int mailjetLight() {
-  // int mailjetOrange[] = {255, 191, 64};
-  // int mailjetBlueGrey[] = {238, 237, 243};
-  // int mailjetLightBlack[] = {41, 44, 51};
-  // int mailjetLightGrey[] = {230, 230, 230};
-  // int mailjetWhite[] = {52, 152, 219};
-  uint16_t i, j;
-  int lightArray[2][3] = {{255, 204, 0}, {238, 237, 243}};
-  int lightValueForArray = 0;
-  for(i=0; i<strip.numPixels(); i++) {
-    if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
-    strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
-    lightValueForArray += 1;
-  }
-  strip.show();
-  return 1;
-}
+    int mailjetLight() {
+      // int mailjetOrange[] = {255, 191, 64};
+      // int mailjetBlueGrey[] = {238, 237, 243};
+      // int mailjetLightBlack[] = {41, 44, 51};
+      // int mailjetLightGrey[] = {230, 230, 230};
+      // int mailjetWhite[] = {52, 152, 219};
+      uint16_t i, j;
+      int lightArray[2][3] = {{255, 204, 0}, {238, 237, 243}};
+      int lightValueForArray = 0;
+      for(i=0; i<strip.numPixels(); i++) {
+        if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
+        strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
+        lightValueForArray += 1;
+      }
+      strip.show();
+      return 1;
+    }
 
-int christmasLight() {
-  // int mailjetOrange[] = {255, 191, 64};
-  // int mailjetBlueGrey[] = {238, 237, 243};
-  // int mailjetLightBlack[] = {41, 44, 51};
-  // int mailjetLightGrey[] = {230, 230, 230};
-  // int mailjetWhite[] = {52, 152, 219};
-  uint16_t i, j;
-  int lightArray[2][3] = {{255, 0, 0}, {0, 255, 0}};
-  int lightValueForArray = 0;
-  for(i=0; i<strip.numPixels(); i++) {
-    if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
-    strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
-    lightValueForArray += 1;
-  }
-  strip.show();
-  return 1;
-}
+    int christmasLight() {
+      // int mailjetOrange[] = {255, 191, 64};
+      // int mailjetBlueGrey[] = {238, 237, 243};
+      // int mailjetLightBlack[] = {41, 44, 51};
+      // int mailjetLightGrey[] = {230, 230, 230};
+      // int mailjetWhite[] = {52, 152, 219};
+      uint16_t i, j;
+      int lightArray[2][3] = {{255, 0, 0}, {0, 255, 0}};
+      int lightValueForArray = 0;
+      for(i=0; i<strip.numPixels(); i++) {
+        if(lightValueForArray > (sizeof(lightArray)/(3*sizeof(int)) - 1)) lightValueForArray = 0; //lightValueForArray > 1 where 1 is number of colors in array minus 1
+        strip.setPixelColor(i, strip.Color(lightArray[lightValueForArray][0], lightArray[lightValueForArray][1], lightArray[lightValueForArray][2]));
+        lightValueForArray += 1;
+      }
+      strip.show();
+      return 1;
+    }
 
-//Sparkcore function for LED dot matrix shape
-int receiveCommandDotMatrix(String command) {
-  if(command.substring(0.3) == "star") star();
-  else if(command.substring(0.5) == "circle") circle();
-  else if(command.substring(0.6) == "mailjet") mailjetMatrix();
-  else if(command.substring(0.3) == "logo") mailjetLogo();
-  else return -1;
+    //Sparkcore function for dot matrix background
+    int receiveCommandBackground(String command) {
+      matrix.fillScreen(matrix.Color333(0, 0, 0)); //erase everything (Only do here and not in shape function because this POST request is done first on the server)
+      if(command.substring(0.2) == "red") solidBackground(255, 0, 0);
+      else if(command.substring(0.4) == "green") solidBackground(0, 255, 0);
+      else if(command.substring(0.3) == "blue") solidBackground(0, 0, 255);
+      else if(command.substring(0.4) == "blank" || command.substring(0.4) == "black" || command.substring(0.6) == "nothing") solidBackground(0, 0, 0);
+      else return -1;
 
-  return 1;
-}
+      return 1;
+    }
 
-int star() {
-  matrix.drawLine(14, 0, 13, 5, matrix.Color333(7, 0, 0)); // 1
-  matrix.drawLine(13, 5, 6, 5, matrix.Color333(7, 0, 0)); //2
-  matrix.drawLine(6, 5, 11, 10, matrix.Color333(7, 0, 0)); //3
-  matrix.drawLine(11, 10, 9, 15, matrix.Color333(7, 0, 0)); //4
-  matrix.drawLine(9, 15, 14, 11, matrix.Color333(7, 0, 0)); //5
-  matrix.drawLine(14, 11, 20, 15, matrix.Color333(7, 0, 0));//6
-  matrix.drawLine(20, 15, 18, 10, matrix.Color333(7, 0, 0));//7
-  matrix.drawLine(18, 10, 23, 5, matrix.Color333(7, 0, 0));//8
-  matrix.drawLine(23, 5, 16, 5, matrix.Color333(7, 0, 0));//9
-  matrix.drawLine(16, 5, 14, 0, matrix.Color333(7, 0, 0));//10
-  delay(500);
-  return 1;
-}
+    int solidBackground(int redValue, int greenValue, int blueValue) {
+      matrix.fillScreen(matrix.Color333(redValue, greenValue, blueValue)); //clear board
+      return 1;
+    }
 
-int circle() {
-  // draw a blue circle (x center, y center, radius)
-  matrix.fillCircle(15, 7, 7, matrix.Color333(7, 0, 7));
-  delay(500);
-  return 1;
-}
+    //Sparkcore function for LED dot matrix icon
+    int receiveCommandDotMatrix(String command) {
+      if(command.substring(0.3) == "star") star();
+      else if(command.substring(0.5) == "circle") circle();
+      else if(command.substring(0.6) == "mailjet") mailjetMatrix();
+      else if(command.substring(0.3) == "logo") mailjetLogo();
+      else return -1;
 
-int mailjetMatrix() {
-  // print each letter with a rainbow color
-  matrix.setTextColor(matrix.Color333(238, 237, 243));
-  matrix.print('m');
-  matrix.setTextColor(matrix.Color333(238, 237, 243));
-  matrix.print('a');
-  matrix.setTextColor(matrix.Color333(238, 237, 243));
-  matrix.print('i');
-  matrix.setTextColor(matrix.Color333(238, 237, 243));
-  matrix.print('l');
+      return 1;
+    }
 
-  matrix.setCursor(14, 9);   // next line
-  matrix.setTextColor(matrix.Color333(255, 204, 0));
-  matrix.print('j');
-  matrix.setTextColor(matrix.Color333(255, 204, 0));
-  matrix.print('e');
-  matrix.setTextColor(matrix.Color333(255, 204, 0));
-  matrix.print('t');
+    int star() {
+      matrix.drawLine(14, 0, 13, 5, matrix.Color333(7, 0, 0)); // 1
+      matrix.drawLine(13, 5, 6, 5, matrix.Color333(7, 0, 0)); //2
+      matrix.drawLine(6, 5, 11, 10, matrix.Color333(7, 0, 0)); //3
+      matrix.drawLine(11, 10, 9, 15, matrix.Color333(7, 0, 0)); //4
+      matrix.drawLine(9, 15, 14, 11, matrix.Color333(7, 0, 0)); //5
+      matrix.drawLine(14, 11, 20, 15, matrix.Color333(7, 0, 0));//6
+      matrix.drawLine(20, 15, 18, 10, matrix.Color333(7, 0, 0));//7
+      matrix.drawLine(18, 10, 23, 5, matrix.Color333(7, 0, 0));//8
+      matrix.drawLine(23, 5, 16, 5, matrix.Color333(7, 0, 0));//9
+      matrix.drawLine(16, 5, 14, 0, matrix.Color333(7, 0, 0));//10
+      delay(500);
+      return 1;
+    }
 
-  return 1;
+    int circle() {
+      // draw a blue circle (x center, y center, radius)
+      matrix.fillCircle(15, 7, 7, matrix.Color333(7, 0, 7));
+      delay(500);
+      return 1;
+    }
 
-}
+    int mailjetMatrix() {
+      // print each letter with a rainbow color
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('m');
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('a');
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('i');
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('l');
 
-int mailjetLogo() {
-  //Create logo
-  matrix.drawLine(1, 1, 29, 4, matrix.Color333(238, 237, 243)); // 1
-  matrix.drawLine(29, 4, 9, 6, matrix.Color333(238, 237, 243)); //2
-  matrix.drawLine(9, 6, 1, 1, matrix.Color333(238, 237, 243)); //3
-  matrix.drawLine(9, 7, 28, 6, matrix.Color333(255, 204, 0)); //4
-  matrix.drawLine(28, 6, 1, 14, matrix.Color333(255, 204, 0)); //5
-  matrix.drawLine(1, 14, 9, 7, matrix.Color333(255, 204, 0));//6
+      matrix.setCursor(14, 9);   // next line
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('j');
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('e');
+      matrix.setTextColor(matrix.Color333(255, 204, 0));
+      matrix.print('t');
 
-  return 1;
+      return 1;
 
-}
+    }
+
+    int mailjetLogo() {
+      //Create logo
+      matrix.drawLine(1, 1, 29, 4, matrix.Color333(238, 237, 243)); // 1
+      matrix.drawLine(29, 4, 9, 6, matrix.Color333(238, 237, 243)); //2
+      matrix.drawLine(9, 6, 1, 1, matrix.Color333(238, 237, 243)); //3
+      matrix.drawLine(9, 7, 28, 6, matrix.Color333(255, 204, 0)); //4
+      matrix.drawLine(28, 6, 1, 14, matrix.Color333(255, 204, 0)); //5
+      matrix.drawLine(1, 14, 9, 7, matrix.Color333(255, 204, 0));//6
+
+      return 1;
+
+    }
 
 
-//Sparkcore function for LED dot matrix background
-int receiveCommandBackground(String command) {
-  matrix.fillScreen(matrix.Color333(0, 0, 0)); //erase everything (Only do here and not in shape function because this POST request is done first on the server)
-  if(command.substring(0.2) == "red") solidBackground(255, 0, 0);
-  else if(command.substring(0.4) == "green") solidBackground(0, 255, 0);
-  else if(command.substring(0.3) == "blue") solidBackground(0, 0, 255);
-  else if(command.substring(0.4) == "blank" || command.substring(0.4) == "black" || command.substring(0.6) == "nothing") solidBackground(0, 0, 0);
-  else return -1;
 
-  return 1;
-}
+    //     // delay(20);
+    //     // draw a pixel in solid white
+    //   matrix.drawPixel(0, 0, matrix.Color333(7, 7, 7));
+    //   delay(500);
 
-int solidBackground(int redValue, int greenValue, int blueValue) {
-  matrix.fillScreen(matrix.Color333(redValue, greenValue, blueValue)); //clear board
-  return 1;
-}
+    //   // fix the screen with green
+    //   matrix.fillRect(0, 0, 32, 16, matrix.Color333(0, 7, 0));
+    //   delay(500);
+
+    //   // draw a box in yellow
+    //   matrix.drawRect(0, 0, 32, 16, matrix.Color333(7, 7, 0));
+    //   delay(500);
+
+    //   // draw an 'X' in red
+    //   matrix.drawLine(0, 0, 31, 15, matrix.Color333(7, 0, 0));
+    //   matrix.drawLine(31, 0, 0, 15, matrix.Color333(7, 0, 0));
+    //   delay(500);
+
+    //   // draw a blue circle
+    //   matrix.drawCircle(7, 7, 7, matrix.Color333(0, 0, 7));
+    //   delay(500);
+
+    //   // fill a violet circle
+    //   matrix.fillCircle(23, 7, 7, matrix.Color333(7, 0, 7));
+    //   delay(500);
+
+    //   // fill the screen with 'black'
+    //   matrix.fillScreen(matrix.Color333(0, 0, 0));
+
+    //   // draw some text!
+    //   matrix.setCursor(1, 0);   // start at top left, with one pixel of spacing
+    //   matrix.setTextSize(1);    // size 1 == 8 pixels high
+
+    //   // print each letter with a rainbow color
+    //   matrix.setTextColor(matrix.Color333(7,0,0));
+    //   matrix.print('1');
+    //   matrix.setTextColor(matrix.Color333(7,4,0));
+    //   matrix.print('6');
+    //   matrix.setTextColor(matrix.Color333(7,7,0));
+    //   matrix.print('x');
+    //   matrix.setTextColor(matrix.Color333(4,7,0));
+    //   matrix.print('3');
+    //   matrix.setTextColor(matrix.Color333(0,7,0));
+    //   matrix.print('2');
+
+    //   matrix.setCursor(1, 9);   // next line
+    //   matrix.setTextColor(matrix.Color333(0,7,7));
+    //   matrix.print('*');
+    //   matrix.setTextColor(matrix.Color333(0,4,7));
+    //   matrix.print('R');
+    //   matrix.setTextColor(matrix.Color333(0,0,7));
+    //   matrix.print('G');
+    //   matrix.setTextColor(matrix.Color333(4,0,7));
+    //   matrix.print("B");
+    //   matrix.setTextColor(matrix.Color333(7,0,4));
+    //   matrix.print("*");
+
+    //mention
+    
