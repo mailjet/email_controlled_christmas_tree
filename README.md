@@ -1,9 +1,12 @@
 # :christmas_tree: Email Controlled Christmas Tree :christmas_tree:
 
-![RGB Dot Matrix](https://raw.githubusercontent.com/tylernappy/email_controlled_christmas_tree/master/assets/images/no_tree.jpg "Text")
+![RGB Dot Matrix](https://raw.githubusercontent.com/tylernappy/email_controlled_christmas_tree/master/assets/images/tree.JPG "Text")
 
 ### Overview
 Using [Mailjet's](https://www.mailjet.com/) [Parse API](http://dev.mailjet.com/guides/parse-api-guide/) -- an easy way to receive content of an email to your webhook -- and a simple Rails server to receive and process incoming emails, LEDs and ornaments, hooked up to a [Spark Core](https://www.spark.io/dev-kits) microcontroller, are controlled using commands sent via email.  Simply send an email to the email address returned when creating an instance of the Parse API with the color scheme of LEDs, the background of the LED dot matrix (aka the star on top of the tree), and what to display on the LED dot matrix (a star, a smiley face, some writing) and all of these will be updated instantly.
+
+### Step by step guide
+Want a more detailed, step by step guide on how to create this?  Check out my tutorial [here](https://www.mailjet.com/blog/email-controlled-christmas-tree/).
 
 ### Layout of files in this repo
 * **christmas_tree_server**
